@@ -118,10 +118,19 @@ body::after{
     z-index:100;
 }
 
+.logo{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+}
+
 .logo img{
     width:145px;
     display:block;
-    filter:drop-shadow(0 0 18px rgba(255,255,255,0.28));
+    margin-left:-25px;
+    filter:
+        drop-shadow(0 0 12px rgba(255,255,255,0.35))
+        drop-shadow(0 0 35px rgba(255,255,255,0.18));
 }
 
 .nav-links{
@@ -320,45 +329,6 @@ body::after{
     font-size:13px;
 }
 
-.surfer{
-    position:fixed;
-    width:90px;
-    height:90px;
-    z-index:-1;
-    left:-120px;
-    top:20%;
-    opacity:0;
-    animation:surferFly 15s linear infinite;
-    pointer-events:none;
-}
-
-.surfer-body{
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    background:radial-gradient(circle at 30% 30%, #ffffff, #bdbdbd 45%, #555 75%);
-    filter:blur(0.3px) drop-shadow(0 0 20px rgba(255,255,255,0.6));
-    transform:skewX(-15deg);
-}
-
-.surfer::after{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:3px;
-    background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.9),rgba(255,255,255,0));
-    top:45px;
-    left:-160px;
-    filter:blur(2px);
-}
-
-@keyframes surferFly{
-    0%{left:-220px;top:18%;opacity:0;transform:scale(0.6) rotate(-8deg);}
-    8%{opacity:0.65;}
-    50%{top:28%;transform:scale(1) rotate(5deg);}
-    92%{opacity:0.65;}
-    100%{left:115%;top:22%;opacity:0;transform:scale(0.7) rotate(-4deg);}
-}
 
 .products{
     padding:110px 8%;
@@ -661,7 +631,7 @@ body::after{
 }
 
 .price{
-    font-size:32px;
+    font-size:30px;
     font-weight:900;
     color:white;
 }
@@ -843,9 +813,6 @@ footer{
 
 <canvas id="particles"></canvas>
 
-<div class="surfer">
-    <div class="surfer-body"></div>
-</div>
 
 <header class="navbar">
     <div class="logo">
@@ -949,7 +916,7 @@ footer{
                 <div class="card-title">HZ2X MACRO</div>
                 <div class="product-note">Advanced macro configurations designed for smoother gameplay and faster execution.</div>
                 <div class="price-row">
-                    <div class="price">$15 <span>/ one-time</span></div>
+                    <div class="price">USD $15 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -977,7 +944,7 @@ footer{
                 <div class="card-title">ZERO DELAY V1</div>
                 <div class="product-note">Optimized latency tweaks focused on reducing input delay and improving responsiveness.</div>
                 <div class="price-row">
-                    <div class="price">$20 <span>/ one-time</span></div>
+                    <div class="price">USD $20 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1005,7 +972,7 @@ footer{
                 <div class="card-title">PRO TWEAKS V1</div>
                 <div class="product-note">Complete performance optimization pack for higher FPS and cleaner system performance.</div>
                 <div class="price-row">
-                    <div class="price">$30 <span>/ one-time</span></div>
+                    <div class="price">USD $30 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1033,7 +1000,7 @@ footer{
                 <div class="card-title">SHOTGUN PACK</div>
                 <div class="product-note">Custom gameplay tuning focused on better consistency and smoother combat feel.</div>
                 <div class="price-row">
-                    <div class="price">$20 <span>/ one-time</span></div>
+                    <div class="price">USD $20 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1061,7 +1028,7 @@ footer{
                 <div class="card-title">BLOOM REDUCER</div>
                 <div class="product-note">Reduces visual bloom effects for cleaner visibility and improved aiming experience.</div>
                 <div class="price-row">
-                    <div class="price">$15 <span>/ one-time</span></div>
+                    <div class="price">USD $15 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1089,7 +1056,7 @@ footer{
                 <div class="card-title">HWID SPOOFER</div>
                 <div class="product-note">Advanced identity reset utility for users who need system profile refresh and privacy-focused setup.</div>
                 <div class="price-row">
-                    <div class="price">$25 <span>/ one-time</span></div>
+                    <div class="price">USD $25 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
