@@ -27,10 +27,15 @@ body{
     overflow-x:hidden;
 }
 
+/* LOADER */
+
 #loader{
     position:fixed;
     inset:0;
-    background:#050505;
+    background:
+        radial-gradient(circle at center,rgba(255,255,255,.08),transparent 32%),
+        radial-gradient(circle at center,rgba(150,70,255,.16),transparent 45%),
+        #050505;
     z-index:99999;
     display:flex;
     align-items:center;
@@ -59,18 +64,62 @@ body{
     text-shadow:
         0 0 15px rgba(255,255,255,0.3),
         0 0 40px rgba(140,80,255,0.45);
-    animation:loaderText 1.8s infinite ease-in-out;
+    animation:cinematicLogo 2s ease-in-out infinite;
 }
 
-@keyframes loaderText{
-    0%,100%{transform:scale(1);opacity:0.85;}
-    50%{transform:scale(1.08);opacity:1;}
+@keyframes cinematicLogo{
+    0%,100%{
+        letter-spacing:8px;
+        opacity:.75;
+        transform:scale(1);
+    }
+
+    50%{
+        letter-spacing:14px;
+        opacity:1;
+        transform:scale(1.08);
+    }
 }
 
 @keyframes pulseLoader{
-    0%,100%{transform:scale(1);opacity:0.7;}
-    50%{transform:scale(1.2);opacity:1;}
+    0%,100%{
+        transform:scale(1);
+        opacity:0.7;
+    }
+
+    50%{
+        transform:scale(1.2);
+        opacity:1;
+    }
 }
+
+/* SOUND BUTTON */
+
+#soundToggle{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:9999;
+    padding:12px 18px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08);
+    color:white;
+    font-weight:900;
+    font-size:12px;
+    letter-spacing:1px;
+    backdrop-filter:blur(14px);
+    cursor:pointer;
+    transition:.3s;
+}
+
+#soundToggle:hover{
+    background:white;
+    color:black;
+    box-shadow:0 0 25px rgba(255,255,255,.35);
+}
+
+/* BACKGROUND */
 
 #particles{
     position:fixed;
@@ -102,6 +151,114 @@ body::after{
     background:linear-gradient(to bottom,rgba(0,0,0,0.2),#050505 95%);
     z-index:-1;
 }
+
+/* SILVER SURFER EFFECT */
+
+.silver-rider{
+    position:fixed;
+    width:150px;
+    height:80px;
+    left:-220px;
+    top:22%;
+    z-index:-1;
+    pointer-events:none;
+    opacity:0;
+    animation:silverFly 15s linear infinite;
+}
+
+.silver-board{
+    position:absolute;
+    width:115px;
+    height:14px;
+    left:18px;
+    top:48px;
+    border-radius:50%;
+    background:linear-gradient(90deg,#555,#fff,#777);
+    box-shadow:
+        0 0 18px rgba(255,255,255,.7),
+        0 0 45px rgba(255,255,255,.25);
+    transform:rotate(-8deg);
+}
+
+.silver-body{
+    position:absolute;
+    width:42px;
+    height:42px;
+    left:55px;
+    top:15px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 30% 25%,#fff,#cfcfcf 45%,#555 80%);
+    box-shadow:0 0 30px rgba(255,255,255,.65);
+    transform:skewX(-12deg);
+}
+
+.silver-body::before{
+    content:"";
+    position:absolute;
+    width:55px;
+    height:6px;
+    background:linear-gradient(90deg,#fff,#888);
+    border-radius:20px;
+    top:18px;
+    left:-42px;
+    transform:rotate(12deg);
+    box-shadow:0 0 18px rgba(255,255,255,.45);
+}
+
+.silver-body::after{
+    content:"";
+    position:absolute;
+    width:55px;
+    height:6px;
+    background:linear-gradient(90deg,#888,#fff);
+    border-radius:20px;
+    top:20px;
+    right:-45px;
+    transform:rotate(-18deg);
+    box-shadow:0 0 18px rgba(255,255,255,.45);
+}
+
+.silver-trail{
+    position:absolute;
+    width:260px;
+    height:4px;
+    left:-245px;
+    top:54px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);
+    filter:blur(2px);
+}
+
+@keyframes silverFly{
+    0%{
+        left:-240px;
+        top:20%;
+        opacity:0;
+        transform:scale(.6) rotate(-6deg);
+    }
+
+    8%{
+        opacity:.75;
+    }
+
+    45%{
+        top:28%;
+        transform:scale(1) rotate(4deg);
+    }
+
+    88%{
+        opacity:.75;
+    }
+
+    100%{
+        left:120%;
+        top:18%;
+        opacity:0;
+        transform:scale(.7) rotate(-8deg);
+    }
+}
+
+/* NAVBAR */
 
 .navbar{
     position:fixed;
@@ -150,6 +307,13 @@ body::after{
     color:black !important;
     font-weight:900 !important;
 }
+
+.nav-discord:hover{
+    box-shadow:0 0 25px rgba(255,255,255,0.35);
+    transform:translateY(-2px);
+}
+
+/* HERO */
 
 .hero{
     min-height:100vh;
@@ -238,6 +402,8 @@ body::after{
     transform:translateY(-4px);
 }
 
+/* GAMES */
+
 .games{
     padding:35px 8% 60px;
     text-align:center;
@@ -274,6 +440,8 @@ body::after{
     border-color:rgba(255,255,255,0.28);
     box-shadow:0 0 25px rgba(255,255,255,0.08);
 }
+
+/* STATS */
 
 .stats{
     padding:40px 8% 70px;
@@ -320,45 +488,7 @@ body::after{
     font-size:13px;
 }
 
-.surfer{
-    position:fixed;
-    width:90px;
-    height:90px;
-    z-index:-1;
-    left:-120px;
-    top:20%;
-    opacity:0;
-    animation:surferFly 15s linear infinite;
-    pointer-events:none;
-}
-
-.surfer-body{
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    background:radial-gradient(circle at 30% 30%, #ffffff, #bdbdbd 45%, #555 75%);
-    filter:blur(0.3px) drop-shadow(0 0 20px rgba(255,255,255,0.6));
-    transform:skewX(-15deg);
-}
-
-.surfer::after{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:3px;
-    background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.9),rgba(255,255,255,0));
-    top:45px;
-    left:-160px;
-    filter:blur(2px);
-}
-
-@keyframes surferFly{
-    0%{left:-220px;top:18%;opacity:0;transform:scale(0.6) rotate(-8deg);}
-    8%{opacity:0.65;}
-    50%{top:28%;transform:scale(1) rotate(5deg);}
-    92%{opacity:0.65;}
-    100%{left:115%;top:22%;opacity:0;transform:scale(0.7) rotate(-4deg);}
-}
+/* PRODUCTS */
 
 .products{
     padding:110px 8%;
@@ -423,6 +553,8 @@ body::after{
     box-shadow:0 0 55px rgba(255,255,255,0.12),0 25px 60px rgba(0,0,0,0.65);
 }
 
+/* FLOATING BOX */
+
 .product-float{
     position:absolute;
     top:-65px;
@@ -437,8 +569,13 @@ body::after{
 }
 
 @keyframes floatBox{
-    0%,100%{transform:translateX(-50%) translateY(0);}
-    50%{transform:translateX(-50%) translateY(-16px);}
+    0%,100%{
+        transform:translateX(-50%) translateY(0);
+    }
+
+    50%{
+        transform:translateX(-50%) translateY(-16px);
+    }
 }
 
 .product-platform{
@@ -456,8 +593,17 @@ body::after{
 }
 
 @keyframes pulseGlow{
-    0%,100%{opacity:0.8;filter:blur(0px);transform:translateX(-50%) scale(1);}
-    50%{opacity:1;filter:blur(1px);transform:translateX(-50%) scale(1.08);}
+    0%,100%{
+        opacity:0.8;
+        filter:blur(0px);
+        transform:translateX(-50%) scale(1);
+    }
+
+    50%{
+        opacity:1;
+        filter:blur(1px);
+        transform:translateX(-50%) scale(1.08);
+    }
 }
 
 .card.white .product-platform{
@@ -616,6 +762,8 @@ body::after{
     box-shadow:0 0 35px rgba(255,49,49,0.24),inset 0 0 28px rgba(255,255,255,0.04);
 }
 
+/* CARD CONTENT */
+
 .product-badge{
     position:absolute;
     top:22px;
@@ -692,6 +840,8 @@ body::after{
     box-shadow:0 0 25px rgba(255,255,255,0.35);
 }
 
+/* REVIEWS */
+
 .reviews{
     padding:120px 8%;
 }
@@ -736,6 +886,8 @@ body::after{
     letter-spacing:1px;
 }
 
+/* FAQ */
+
 .faq{
     padding:120px 8%;
 }
@@ -773,6 +925,8 @@ body::after{
     font-size:15px;
 }
 
+/* DISCORD */
+
 .discord{
     padding:120px 8%;
     text-align:center;
@@ -802,12 +956,16 @@ body::after{
     margin-bottom:36px;
 }
 
+/* FOOTER */
+
 footer{
     padding:36px 20px;
     text-align:center;
     color:#777;
     border-top:1px solid rgba(255,255,255,0.08);
 }
+
+/* REVEAL */
 
 .reveal{
     opacity:0;
@@ -820,17 +978,49 @@ footer{
     transform:translateY(0);
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
-    .navbar{padding:0 22px;}
-    .logo img{width:120px;}
-    .nav-links{display:none;}
-    .hero h1{font-size:55px;}
-    .hero p{font-size:16px;}
-    .section-title{font-size:36px;}
-    .discord h2{font-size:36px;}
-    .price-row{flex-direction:column;align-items:flex-start;}
-    .purchase{width:100%;}
-    .card{padding-top:205px;}
+    .navbar{
+        padding:0 22px;
+    }
+
+    .logo img{
+        width:120px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section-title{
+        font-size:36px;
+    }
+
+    .discord h2{
+        font-size:36px;
+    }
+
+    .price-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .purchase{
+        width:100%;
+    }
+
+    .card{
+        padding-top:205px;
+    }
 }
 </style>
 </head>
@@ -841,10 +1031,14 @@ footer{
     <div class="loader-logo">HZ2X</div>
 </div>
 
+<button id="soundToggle">SOUND OFF</button>
+
 <canvas id="particles"></canvas>
 
-<div class="surfer">
-    <div class="surfer-body"></div>
+<div class="silver-rider">
+    <div class="silver-board"></div>
+    <div class="silver-body"></div>
+    <div class="silver-trail"></div>
 </div>
 
 <header class="navbar">
@@ -947,7 +1141,10 @@ footer{
 
             <div class="card-content">
                 <div class="card-title">HZ2X MACRO</div>
-                <div class="product-note">Advanced macro configurations designed for smoother gameplay and faster execution.</div>
+                <div class="product-note">
+                    Advanced macro configurations designed for smoother gameplay and faster execution.
+                </div>
+
                 <div class="price-row">
                     <div class="price">$15 <span>/ one-time</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
@@ -975,7 +1172,10 @@ footer{
 
             <div class="card-content">
                 <div class="card-title">ZERO DELAY V1</div>
-                <div class="product-note">Optimized latency tweaks focused on reducing input delay and improving responsiveness.</div>
+                <div class="product-note">
+                    Optimized latency tweaks focused on reducing input delay and improving responsiveness.
+                </div>
+
                 <div class="price-row">
                     <div class="price">$20 <span>/ one-time</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
@@ -1003,7 +1203,10 @@ footer{
 
             <div class="card-content">
                 <div class="card-title">PRO TWEAKS V1</div>
-                <div class="product-note">Complete performance optimization pack for higher FPS and cleaner system performance.</div>
+                <div class="product-note">
+                    Complete performance optimization pack for higher FPS and cleaner system performance.
+                </div>
+
                 <div class="price-row">
                     <div class="price">$30 <span>/ one-time</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
@@ -1031,7 +1234,10 @@ footer{
 
             <div class="card-content">
                 <div class="card-title">SHOTGUN PACK</div>
-                <div class="product-note">Custom gameplay tuning focused on better consistency and smoother combat feel.</div>
+                <div class="product-note">
+                    Custom gameplay tuning focused on better consistency and smoother combat feel.
+                </div>
+
                 <div class="price-row">
                     <div class="price">$20 <span>/ one-time</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
@@ -1059,7 +1265,10 @@ footer{
 
             <div class="card-content">
                 <div class="card-title">BLOOM REDUCER</div>
-                <div class="product-note">Reduces visual bloom effects for cleaner visibility and improved aiming experience.</div>
+                <div class="product-note">
+                    Reduces visual bloom effects for cleaner visibility and improved aiming experience.
+                </div>
+
                 <div class="price-row">
                     <div class="price">$15 <span>/ one-time</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
@@ -1087,7 +1296,10 @@ footer{
 
             <div class="card-content">
                 <div class="card-title">HWID SPOOFER</div>
-                <div class="product-note">Advanced identity reset utility for users who need system profile refresh and privacy-focused setup.</div>
+                <div class="product-note">
+                    Advanced identity reset utility for users who need system profile refresh and privacy-focused setup.
+                </div>
+
                 <div class="price-row">
                     <div class="price">$25 <span>/ one-time</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
@@ -1103,23 +1315,31 @@ footer{
     <p class="section-subtitle">Trusted by competitive players and performance enthusiasts.</p>
 
     <div class="review-grid">
+
         <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Went from unstable FPS to extremely smooth gameplay instantly. Best tweaks I've used so far.</div>
+            <div class="review-text">
+                Went from unstable FPS to extremely smooth gameplay instantly. Best tweaks I've used so far.
+            </div>
             <div class="review-user">— FORTNITE PLAYER</div>
         </div>
 
         <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">Input delay feels almost nonexistent after ZERO DELAY. Mouse movement feels way more responsive.</div>
+            <div class="review-text">
+                Input delay feels almost nonexistent after ZERO DELAY. Mouse movement feels way more responsive.
+            </div>
             <div class="review-user">— VALORANT PLAYER</div>
         </div>
 
         <div class="review-card">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">HZ2X macros are insane. Smooth execution and cleaner gameplay overall.</div>
+            <div class="review-text">
+                HZ2X macros are insane. Smooth execution and cleaner gameplay overall.
+            </div>
             <div class="review-user">— COMPETITIVE USER</div>
         </div>
+
     </div>
 </section>
 
@@ -1128,28 +1348,41 @@ footer{
     <p class="section-subtitle">Frequently asked questions.</p>
 
     <div class="faq-container">
+
         <div class="faq-item">
             <div class="faq-question">Is this safe for my PC?</div>
-            <div class="faq-answer">Yes. All optimizations are focused on performance improvements, lower latency and cleaner system behavior.</div>
+            <div class="faq-answer">
+                Yes. All optimizations are focused on performance improvements, lower latency and cleaner system behavior.
+            </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question">Which games are supported?</div>
-            <div class="faq-answer">Fortnite, Valorant, Warzone, Gears of War, League of Legends and more.</div>
+            <div class="faq-answer">
+                Fortnite, Valorant, Warzone, Gears of War, League of Legends and more.
+            </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question">How do I purchase?</div>
-            <div class="faq-answer">Press BUY NOW and join the official HZ2X Discord server for setup and support.</div>
+            <div class="faq-answer">
+                Press BUY NOW and join the official HZ2X Discord server for setup and support.
+            </div>
         </div>
+
     </div>
 </section>
 
 <section class="discord reveal" id="discord">
     <div class="discord-box">
         <h2>JOIN OUR DISCORD</h2>
-        <p>Access product updates, releases, support and the HZ2X community.</p>
-        <a href="https://discord.gg/QxXHqF6fcj" target="_blank" class="btn btn-primary">JOIN DISCORD</a>
+        <p>
+            Access product updates, releases, support and the HZ2X community.
+        </p>
+
+        <a href="https://discord.gg/QxXHqF6fcj" target="_blank" class="btn btn-primary">
+            JOIN DISCORD
+        </a>
     </div>
 </section>
 
@@ -1165,6 +1398,8 @@ window.addEventListener("load", ()=>{
         loader.style.visibility = "hidden";
     },1200);
 });
+
+/* PARTICLES */
 
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -1236,6 +1471,8 @@ window.addEventListener("resize",()=>{
     initParticles();
 });
 
+/* REVEAL ANIMATION */
+
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll(){
@@ -1252,6 +1489,8 @@ function revealOnScroll(){
 
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
+
+/* 3D CARD MOUSE EFFECT */
 
 const cards = document.querySelectorAll(".card");
 
@@ -1277,6 +1516,55 @@ cards.forEach(card=>{
         card.style.setProperty("--mx", "50%");
         card.style.setProperty("--my", "50%");
     });
+});
+
+/* FUTURISTIC SOUNDS */
+
+let soundEnabled = false;
+let audioCtx;
+
+function initAudio(){
+    if(!audioCtx){
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+}
+
+function playTone(freq = 500, duration = 0.08, volume = 0.035){
+    if(!soundEnabled) return;
+
+    initAudio();
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = "sine";
+    osc.frequency.value = freq;
+
+    gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+}
+
+document.getElementById("soundToggle").addEventListener("click",()=>{
+    soundEnabled = !soundEnabled;
+    initAudio();
+
+    document.getElementById("soundToggle").innerText = soundEnabled ? "SOUND ON" : "SOUND OFF";
+
+    if(soundEnabled){
+        playTone(420,0.12,0.04);
+        setTimeout(()=>playTone(720,0.12,0.035),90);
+    }
+});
+
+document.querySelectorAll("a, button, .card, .game, .review-card, .faq-item").forEach(el=>{
+    el.addEventListener("mouseenter",()=>playTone(680,0.045,0.018));
+    el.addEventListener("click",()=>playTone(920,0.07,0.025));
 });
 </script>
 
