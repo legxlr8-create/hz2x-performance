@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>HZ2X PERFORMANCE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,109 +151,55 @@ body::after{
     z-index:-1;
 }
 
-/* SILVER SURFER EFFECT */
+/* SILVER RIDER EFFECT */
 
 .silver-rider{
     position:fixed;
-    width:150px;
-    height:80px;
+    width:160px;
+    height:160px;
     left:-220px;
-    top:22%;
+    top:24%;
     z-index:-1;
     pointer-events:none;
     opacity:0;
     animation:silverFly 15s linear infinite;
+    filter:
+        drop-shadow(0 0 14px rgba(255,255,255,.55))
+        drop-shadow(0 0 35px rgba(255,255,255,.18));
 }
 
-.silver-board{
-    position:absolute;
-    width:115px;
-    height:14px;
-    left:18px;
-    top:48px;
-    border-radius:50%;
-    background:linear-gradient(90deg,#555,#fff,#777);
-    box-shadow:
-        0 0 18px rgba(255,255,255,.7),
-        0 0 45px rgba(255,255,255,.25);
-    transform:rotate(-8deg);
-}
-
-.silver-body{
-    position:absolute;
-    width:42px;
-    height:42px;
-    left:55px;
-    top:15px;
-    border-radius:50%;
-    background:
-        radial-gradient(circle at 30% 25%,#fff,#cfcfcf 45%,#555 80%);
-    box-shadow:0 0 30px rgba(255,255,255,.65);
-    transform:skewX(-12deg);
-}
-
-.silver-body::before{
-    content:"";
-    position:absolute;
-    width:55px;
-    height:6px;
-    background:linear-gradient(90deg,#fff,#888);
-    border-radius:20px;
-    top:18px;
-    left:-42px;
-    transform:rotate(12deg);
-    box-shadow:0 0 18px rgba(255,255,255,.45);
-}
-
-.silver-body::after{
-    content:"";
-    position:absolute;
-    width:55px;
-    height:6px;
-    background:linear-gradient(90deg,#888,#fff);
-    border-radius:20px;
-    top:20px;
-    right:-45px;
-    transform:rotate(-18deg);
-    box-shadow:0 0 18px rgba(255,255,255,.45);
-}
-
-.silver-trail{
-    position:absolute;
-    width:260px;
-    height:4px;
-    left:-245px;
-    top:54px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);
-    filter:blur(2px);
+.silver-rider svg{
+    width:100%;
+    height:100%;
+    display:block;
 }
 
 @keyframes silverFly{
     0%{
         left:-240px;
-        top:20%;
+        top:18%;
         opacity:0;
-        transform:scale(.6) rotate(-6deg);
+        transform:scale(.55) rotate(-7deg);
     }
 
     8%{
-        opacity:.75;
+        opacity:.9;
     }
 
     45%{
-        top:28%;
-        transform:scale(1) rotate(4deg);
+        top:29%;
+        transform:scale(.85) rotate(4deg);
     }
 
     88%{
-        opacity:.75;
+        opacity:.9;
     }
 
     100%{
         left:120%;
-        top:18%;
+        top:20%;
         opacity:0;
-        transform:scale(.7) rotate(-8deg);
+        transform:scale(.6) rotate(-8deg);
     }
 }
 
@@ -511,9 +456,10 @@ body::after{
 
 .product-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(295px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(295px,360px));
     gap:38px;
     perspective:1200px;
+    justify-content:center;
 }
 
 .card{
@@ -1036,9 +982,77 @@ footer{
 <canvas id="particles"></canvas>
 
 <div class="silver-rider">
-    <div class="silver-board"></div>
-    <div class="silver-body"></div>
-    <div class="silver-trail"></div>
+    <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="32%" stop-color="#d8d8d8"/>
+                <stop offset="55%" stop-color="#7f7f7f"/>
+                <stop offset="78%" stop-color="#f5f5f5"/>
+                <stop offset="100%" stop-color="#4d4d4d"/>
+            </linearGradient>
+
+            <linearGradient id="boardMetal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#252525"/>
+                <stop offset="35%" stop-color="#ffffff"/>
+                <stop offset="68%" stop-color="#8d8d8d"/>
+                <stop offset="100%" stop-color="#111111"/>
+            </linearGradient>
+
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="2.4" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+
+        <ellipse cx="92" cy="136" rx="58" ry="12" fill="rgba(255,255,255,0.16)" filter="url(#glow)"/>
+
+        <path d="M42 145 C77 118, 107 98, 153 76 C168 70, 174 82, 158 96 C119 130, 85 154, 42 162 C25 165, 25 156, 42 145Z"
+              fill="url(#boardMetal)"
+              stroke="#ffffff"
+              stroke-width="1.4"
+              filter="url(#glow)"/>
+
+        <circle cx="82" cy="34" r="14" fill="url(#metal)" filter="url(#glow)"/>
+
+        <path d="M80 48 C64 60, 61 77, 72 91 C83 105, 104 101, 108 83 C112 65, 99 50, 80 48Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+
+        <path d="M70 78 C56 90, 48 105, 43 123 C41 132, 50 134, 55 126 C62 112, 72 101, 84 93Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+
+        <path d="M100 84 C112 93, 122 104, 134 116 C141 123, 149 115, 143 108 C132 95, 118 84, 106 76Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+
+        <path d="M76 92 C66 104, 63 120, 59 140 C57 150, 69 151, 72 141 C77 124, 84 113, 95 103Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+
+        <path d="M98 100 C108 113, 114 126, 119 143 C122 153, 134 150, 132 139 C128 119, 119 104, 108 94Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+
+        <path d="M64 61 C50 66, 39 78, 31 92 C27 99, 35 105, 42 98 C51 88, 59 79, 74 73Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+
+        <path d="M105 58 C121 57, 138 63, 151 72 C159 78, 153 88, 144 84 C132 78, 119 73, 105 75Z"
+              fill="url(#metal)"
+              stroke="#f7f7f7"
+              stroke-width="1"/>
+    </svg>
 </div>
 
 <header class="navbar">
@@ -1146,7 +1160,7 @@ footer{
                 </div>
 
                 <div class="price-row">
-                    <div class="price">$15 <span>/ one-time</span></div>
+                    <div class="price">$15 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1177,7 +1191,7 @@ footer{
                 </div>
 
                 <div class="price-row">
-                    <div class="price">$20 <span>/ one-time</span></div>
+                    <div class="price">$20 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1208,7 +1222,7 @@ footer{
                 </div>
 
                 <div class="price-row">
-                    <div class="price">$30 <span>/ one-time</span></div>
+                    <div class="price">$30 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1239,7 +1253,7 @@ footer{
                 </div>
 
                 <div class="price-row">
-                    <div class="price">$20 <span>/ one-time</span></div>
+                    <div class="price">$20 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1270,7 +1284,7 @@ footer{
                 </div>
 
                 <div class="price-row">
-                    <div class="price">$15 <span>/ one-time</span></div>
+                    <div class="price">$15 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
@@ -1301,7 +1315,7 @@ footer{
                 </div>
 
                 <div class="price-row">
-                    <div class="price">$25 <span>/ one-time</span></div>
+                    <div class="price">$25 <span>/ lifetime</span></div>
                     <button class="purchase" onclick="window.open('https://discord.gg/QxXHqF6fcj','_blank')">BUY NOW</button>
                 </div>
             </div>
